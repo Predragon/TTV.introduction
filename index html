@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Third Voice - AI for Relationship Communication</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6366f1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-pitch {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #f59e0b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: #d97706;
+        }
+
+        .section {
+            padding: 4rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #6366f1;
+            border-radius: 2px;
+        }
+
+        .origin-story {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #6366f1;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .audience-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .audience-card:hover {
+            transform: scale(1.05);
+        }
+
+        .audience-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .progress-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .progress-list li {
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .progress-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+
+        .progress-list li.next::before {
+            content: '🔄';
+        }
+
+        .help-section {
+            background: #fef3c7;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .help-section h3 {
+            color: #92400e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .help-section p {
+            color: #a16207;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            background: #1f2937;
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: #f3f4f6;
+        }
+
+        .contact-info a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-info a:hover {
+            color: #93c5fd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                🧠💬 The Third Voice
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#audience">Who It Helps</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>🌱 The Third Voice</h1>
+                <p class="subtitle">An emotionally intelligent AI for relationship communication</p>
+                
+                <div class="hero-pitch">
+                    <strong>The Third Voice is an AI-powered message coach that helps people reframe emotional messages, decode incoming texts, and rebuild trust — one message at a time.</strong>
+                </div>
+                
+                <a href="#contact" class="cta-button">Get Involved</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>🌱 Origin Story</h2>
+                <div class="origin-story">
+                    <p>The Third Voice was born in a deeply personal crisis — a breakdown in communication during a time of extreme emotional stress while I was detained. In those moments, I realized that most human conflict stems not from lack of care, but from misfired communication.</p>
+                    
+                    <p>I envisioned something new: a calm, emotionally intelligent "third voice" that could help people hear each other when emotions run high.</p>
+                    
+                    <p><strong>Not a chatbot. Not a therapist. But a digital co-mediator — present in the moment when it matters most.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="container">
+                <h2>🔧 What It Does</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>✅ Message Coach (Solo Mode)</h3>
+                        <p>Analyze your message before sending. Suggest tone and emotional impact. Recommend gentler, clearer phrasing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✅ Emotional Translator (Inbox Mode)</h3>
+                        <p>Decode incoming texts for underlying tone. Help users interpret intent without reacting emotionally.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✅ Co-Parent Mode</h3>
+                        <p>Focus conversations around the child. Defuse personal triggers and reduce conflict escalation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✅ Shared Couple Mode (Opt-In)</h3>
+                        <p>Real-time AI mediation for both users. Emotional intelligence training over time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✅ Ethical AI Principles</h3>
+                        <p>User has control, full transparency. Emotional data is private, not weaponized.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="audience">
+            <div class="container">
+                <h2>👥 Who It Helps</h2>
+                <div class="audience-grid">
+                    <div class="audience-card">
+                        <h3>💕 Couples</h3>
+                        <p>Trying to communicate during conflict</p>
+                    </div>
+                    <div class="audience-card">
+                        <h3>👨‍👩‍👧‍👦 Co-Parents</h3>
+                        <p>Dealing with custody stress and separation</p>
+                    </div>
+                    <div class="audience-card">
+                        <h3>🤔 Overthinkers</h3>
+                        <p>Prone to anxiety about texting and reactions</p>
+                    </div>
+                    <div class="audience-card">
+                        <h3>💬 Everyone</h3>
+                        <p>Who texts emotionally and wishes for a second chance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="progress">
+            <div class="container">
+                <h2>🚧 Where We Are</h2>
+                <ul class="progress-list">
+                    <li>Vision & Narrative fully defined</li>
+                    <li>Domain secured: www.thethirdvoice.ai</li>
+                    <li>GitHub landing page live</li>
+                    <li>Technical prototype wireframes designed</li>
+                    <li>Founder's Journal & Launch Strategy in progress</li>
+                    <li>Early collaborators and legal advisors identified</li>
+                    <li class="next">Next Step: MVP prototype development + publication plan</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="help-section">
+                    <h3>🤝 How You Can Help</h3>
+                    <p>If you're reading this, I see you as someone I trust — with insight, feedback, or network reach that could shape this into something meaningful.</p>
+                    <br>
+                    <p><strong>I'd love your input on:</strong> MVP Focus, Monetization, Partnerships with coaches/therapists, or Collaborators in CTO, UX/UI, or behavioral science.</p>
+                </div>
+                
+                <div class="contact-info" id="contact">
+                    <h3>📧 Get In Touch</h3>
+                    <p><strong>Founder:</strong> Predrag Mirkovic</p>
+                    <p><strong>Email:</strong> <a href="mailto:thethirdvoice.ai@gmail.com">thethirdvoice.ai@gmail.com</a></p>
+                    <p><strong>Website:</strong> <a href="https://www.thethirdvoice.ai">www.thethirdvoice.ai</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Third Voice. Building emotional intelligence, one message at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
